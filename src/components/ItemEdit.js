@@ -20,8 +20,9 @@ class ItemEdit extends Component {
         <td className="text-center">{this.props.indexEdit}</td>
         <td>
           <input 
-            type="text" className="form-control" 
-            value={this.props.nameEdit}
+            type="text" 
+            className="form-control" 
+            value={this.props.nameEdit}  
             onChange={(event) => this.props.handleEditInputChange(event.target.value)}
           />
         </td>
@@ -36,13 +37,15 @@ class ItemEdit extends Component {
         </td>
         <td>
           <button 
-            type="button" className="btn btn-default btn-sm marginR5"
+            type="button" 
+            className="btn btn-default btn-sm marginR5"
             onClick={()=>this.props.handleEditClickCancel()}
           >
             Cancel
           </button>
           <button 
-            type="button" className="btn btn-success btn-sm"
+            type="button" 
+            className="btn btn-success btn-sm"
             onClick={()=>this.props.handleEditClickSubmit()}
           >
             Save

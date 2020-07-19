@@ -18,14 +18,16 @@ class Form extends Component {
     if (this.props.showForm === false) return null;
     return(
       <form className="form-inline" onSubmit={()=>this.props.handleFormClickSubmit()}>
-        <div className="form-group">
+        <div className="form-group marginR5">
           <input 
-            type="text" className="form-control" placeholder="Item Name" 
-            value={this.props.valueItem}
+            type="text" 
+            className="form-control" 
+            placeholder="Item Name" 
+            value={this.props.valueItem} 
             onChange={(event)=>this.props.handleFormInputChange(event.target.value)}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group marginR5">
           <select 
             className="form-control"
             value={this.props.levelItem}
@@ -35,16 +37,18 @@ class Form extends Component {
           </select>
         </div>
         <button 
-          type="button" className="btn btn-primary"
+          type="button" 
+          className="btn btn-default marginR5"
           onClick={()=>this.props.handleFormClickCancel()}
         >
-          Submit
+          Cancel
         </button>
         <button 
-          type="button" className="btn btn-default"
+          type="button" 
+          className="btn btn-primary marginR5"
           onClick={()=>this.props.handleFormClickSubmit()}
         >
-          Cancel
+          Submit
         </button>
       </form>
     )

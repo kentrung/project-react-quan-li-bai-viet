@@ -1,6 +1,19 @@
 import React, {Component} from 'react';
 
 class Sort extends Component {
+  constructor(props) {  
+    super(props);
+    this.state = {
+      active: false
+    }
+  }
+  handleClick = (sortType,sortOrder) => {
+    this.props.handleSort(sortType,sortOrder);
+    this.setState({active: false})
+  }
+  handleActivateSort = () => {
+    this.setState({ active: !this.state.active})
+  }
   renderSort = () => {
     let {sortType, sortOrder} = this.props;
     if(sortType !== '' && sortOrder !== '') {
@@ -13,11 +26,18 @@ class Sort extends Component {
   }
   render() {
     return(
-      <div className="dropdown">
-        <button className="btn btn-default dropdown-toggle marginR5" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <div className={this.state.active ? "dropdown open" : "dropdown"}>
+        <button 
+          className="btn btn-default dropdown-toggle marginR5" 
+          type="button" 
+          data-toggle="dropdown" 
+          aria-haspopup="true" 
+          aria-expanded="true"
+          onClick={this.handleActivateSort}
+        >
           Sort by <span className="caret" />
         </button>
-        <ul className="dropdown-menu" id="dropdownMenu1">
+        <ul className="dropdown-menu">
           <li onClick={() => this.handleClick('name','asc')}>
             <span role="button" className="text-uppercase">Name ASC</span>
           </li>
@@ -35,9 +55,6 @@ class Sort extends Component {
         {this.renderSort()}
       </div>
     )
-  }
-  handleClick = (sortType,sortOrder) => {
-    this.props.handleSort(sortType,sortOrder);
   }
 }
 
